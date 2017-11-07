@@ -12,11 +12,12 @@ import ua.recycler.binding.mvpbinding.presenter.LoginContract;
  */
 
 public class UserViewModel extends BaseObservable {
-    private User user;
+    public User user;
     public LoginContract.EventListener listener;
     public String login;
     public String password;
     public String passwordSecond;
+    public boolean valid;
 
     public UserViewModel(User user, LoginContract.EventListener listener) {
         this.listener = listener;
@@ -25,8 +26,10 @@ public class UserViewModel extends BaseObservable {
         passwordSecond = user.password;
         this.user = user;
     }
-
+    @Bindable
     public User getUser() {
+        user.setLogin(login);
+        user.setPassword(password);
         return user;
     }
 
@@ -39,37 +42,49 @@ public class UserViewModel extends BaseObservable {
     }
 
     @Bindable
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean valid) {
+        this.valid = validatePassword();
+        notifyPropertyChanged(BR.valid);
+    }
+
+    @Bindable
     public String getLogin() {
         return login;
     }
 
-//    public void setLogin(String login) {
-//        this.login = login;
-//        notifyPropertyChanged(BR.login);
-//    }
-//
-//    @Bindable
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//        notifyPropertyChanged(BR.password);
-//    }
-//
-//    @Bindable
-//    public String getPasswordSecond() {
-//        return passwordSecond;
-//    }
-//
-//    public void setPasswordSecond(String passwordSecond) {
-//        this.passwordSecond = passwordSecond;
-//        notifyPropertyChanged(BR.password);
-//    }
-//
-//    private boolean validatePassword() {
-//        boolean matches = !isNullOrEmpty(mPassword) && mPassword.length() >= Const.MIN_LENGTH_PASSWORD;
-//        return matches;
-//    }
+    public void setLogin(String login) {
+        this.login = login;
+        notifyPropertyChanged(BR.login);
+    }
+
+    @Bindable
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+        notifyPropertyChanged(BR.password);
+        setValid(validatePassword());
+    }
+
+    @Bindable
+    public String getPasswordSecond() {
+        return passwordSecond;
+    }
+
+    public void setPasswordSecond(String passwordSecond) {
+        this.passwordSecond = passwordSecond;
+        notifyPropertyChanged(BR.passwordSecond);
+        setValid(validatePassword());
+    }
+
+    private boolean validatePassword() {
+        boolean matches = password.equals(passwordSecond);
+        return matches;
+    }
 }
