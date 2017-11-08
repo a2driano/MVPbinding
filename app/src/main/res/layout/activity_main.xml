@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable
             name="model"
-            type="ua.recycler.binding.mvpbinding.UserViewModel"/>
+            type="ua.recycler.binding.mvpbinding.UserViewModel" />
 
         <variable
             name="listener"
-            type="ua.recycler.binding.mvpbinding.presenter.LoginContract.EventListener"/>
+            type="ua.recycler.binding.mvpbinding.presenter.LoginContract.EventListener" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:tools="http://schemas.android.com/tools"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  tools:context="ua.recycler.binding.mvpbinding.MainActivity">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="ua.recycler.binding.mvpbinding.MainActivity">
 
 
         <EditText
@@ -27,7 +27,7 @@
             android:ems="10"
             android:hint="Login"
             android:inputType="textPersonName"
-            android:text="@={model.login}"/>
+            android:text="@={model.login}" />
 
         <EditText
             android:id="@+id/editText"
@@ -36,7 +36,7 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPersonName"
-            android:text="@={model.password}"/>
+            android:text="@={model.password}" />
 
         <EditText
             android:id="@+id/editText3"
@@ -45,7 +45,50 @@
             android:ems="10"
             android:hint="Password repeat"
             android:inputType="textPersonName"
-            android:text="@={model.passwordSecond}"/>
+            android:text="@={model.passwordSecond}" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Children" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/child_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password repeat"
+                android:inputType="textPersonName"
+                android:layout_weight="1"
+                android:text="name" />
+
+            <EditText
+                android:id="@+id/child_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password repeat"
+                android:inputType="textPersonName"
+                android:layout_weight="1"
+                android:text="age" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonChild"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="12dp"
+            android:gravity="center"
+            android:text="save children" />
 
         <Button
             android:id="@+id/button"
@@ -53,9 +96,9 @@
             android:layout_height="wrap_content"
             android:enabled="@{model.valid}"
             android:onClick="@{()->listener.registration(model.user)}"
-            android:text="registration"/>
-    </LinearLayout>
+            android:text="registration" />
 
+    </LinearLayout>
 </layout>
 
 

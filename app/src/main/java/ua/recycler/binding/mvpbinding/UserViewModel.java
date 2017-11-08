@@ -3,6 +3,8 @@ package ua.recycler.binding.mvpbinding;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
+import java.util.List;
+
 import ua.recycler.binding.mvpbinding.model.User;
 import ua.recycler.binding.mvpbinding.presenter.LoginContract;
 
@@ -14,6 +16,7 @@ import ua.recycler.binding.mvpbinding.presenter.LoginContract;
 public class UserViewModel extends BaseObservable {
     public User user;
     public LoginContract.EventListener listener;
+    public long id;
     public String login;
     public String password;
     public String passwordSecond;
@@ -21,11 +24,13 @@ public class UserViewModel extends BaseObservable {
 
     public UserViewModel(User user, LoginContract.EventListener listener) {
         this.listener = listener;
+        id = user.getId();
         login = user.login;
         password = user.password;
         passwordSecond = user.password;
         this.user = user;
     }
+
     @Bindable
     public User getUser() {
         user.setLogin(login);
@@ -48,7 +53,7 @@ public class UserViewModel extends BaseObservable {
 
     public void setValid(boolean valid) {
         this.valid = validatePassword();
-        notifyPropertyChanged(BR.valid);
+        notifyPropertyChanged(ua.recycler.binding.mvpbinding.BR.valid);
     }
 
     @Bindable
@@ -58,7 +63,7 @@ public class UserViewModel extends BaseObservable {
 
     public void setLogin(String login) {
         this.login = login;
-        notifyPropertyChanged(BR.login);
+        notifyPropertyChanged(ua.recycler.binding.mvpbinding.BR.login);
     }
 
     @Bindable
@@ -68,7 +73,7 @@ public class UserViewModel extends BaseObservable {
 
     public void setPassword(String password) {
         this.password = password;
-        notifyPropertyChanged(BR.password);
+        notifyPropertyChanged(ua.recycler.binding.mvpbinding.BR.password);
         setValid(validatePassword());
     }
 
@@ -79,7 +84,7 @@ public class UserViewModel extends BaseObservable {
 
     public void setPasswordSecond(String passwordSecond) {
         this.passwordSecond = passwordSecond;
-        notifyPropertyChanged(BR.passwordSecond);
+        notifyPropertyChanged(ua.recycler.binding.mvpbinding.BR.passwordSecond);
         setValid(validatePassword());
     }
 
