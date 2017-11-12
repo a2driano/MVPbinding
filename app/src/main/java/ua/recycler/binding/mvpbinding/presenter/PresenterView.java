@@ -1,5 +1,7 @@
 package ua.recycler.binding.mvpbinding.presenter;
 
+import android.util.Log;
+
 import ua.recycler.binding.mvpbinding.App;
 import ua.recycler.binding.mvpbinding.model.User;
 
@@ -18,6 +20,8 @@ public class PresenterView implements LoginContract.EventListener {
     @Override
     public void registration(User user) {
         App.getManager().addUser(user);
+
+        Log.d("SAVE","*****************" + user.toString());
 
         view.startFragment();
     }
