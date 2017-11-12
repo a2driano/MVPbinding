@@ -21,7 +21,4 @@ public class PresenterView implements LoginContract.EventListener {
 
         view.startFragment();
     }
-
-
-
 }

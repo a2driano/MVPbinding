@@ -4,6 +4,7 @@ import android.app.Application;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import ua.recycler.binding.mvpbinding.data.DBManager;
 
 /**
  * Created by kunde on 06.11.2017.

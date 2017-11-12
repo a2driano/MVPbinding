@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">MVPbinding</string>
+    <string name="app_name">MVP Binding</string>
+
+    <string name="error_text">Passwords must be equals!</string>
 </resources>

@@ -7,12 +7,16 @@ import io.realm.annotations.PrimaryKey;
  * Created by kunde on 08.11.2017.
  */
 
-class Child extends RealmObject {
+public class Child extends RealmObject {
     @PrimaryKey
     private long id;
 
     private String name;
     private int age;
+
+    public Child() {
+        this.id = System.currentTimeMillis();
+    }
 
     public Child(String name, int age) {
         this.id = System.currentTimeMillis();

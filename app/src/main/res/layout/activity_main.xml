@@ -1,102 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="model"
-            type="ua.recycler.binding.mvpbinding.UserViewModel" />
+            type="ua.recycler.binding.mvpbinding.UserViewModel"/>
 
         <variable
             name="listener"
-            type="ua.recycler.binding.mvpbinding.presenter.LoginContract.EventListener" />
+            type="ua.recycler.binding.mvpbinding.presenter.LoginContract.EventListener"/>
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="ua.recycler.binding.mvpbinding.MainActivity">
+        android:padding="12dp">
 
 
-        <EditText
-            android:id="@+id/name"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Login"
-            android:inputType="textPersonName"
-            android:text="@={model.login}" />
+            app:counterEnabled="true"
+            app:counterMaxLength="24">
 
-        <EditText
-            android:id="@+id/editText"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Login"
+                android:inputType="textPersonName"
+                android:text="@={model.login}"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPersonName"
-            android:text="@={model.password}" />
+            app:passwordToggleEnabled="true">
 
-        <EditText
-            android:id="@+id/editText3"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:text="@={model.password}"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Password repeat"
-            android:inputType="textPersonName"
-            android:text="@={model.passwordSecond}" />
+            app:errorEnabled="@{!model.valid}"
+            app:errorText="@{@string/error_text}"
+            app:passwordToggleEnabled="true">
 
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Children" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/child_name"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Password repeat"
-                android:inputType="textPersonName"
-                android:layout_weight="1"
-                android:text="name" />
+                android:inputType="textPassword"
+                android:text="@={model.passwordSecond}"/>
+        </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/child_age"
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="8dp">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Password repeat"
-                android:inputType="textPersonName"
-                android:layout_weight="1"
-                android:text="age" />
+                android:padding="12dp">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="Children"/>
 
-        <Button
-            android:id="@+id/buttonChild"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="12dp"
-            android:gravity="center"
-            android:text="save children" />
+                <LinearLayout
+                    android:id="@+id/text_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/child_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Name"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"/>
+
+                    <EditText
+                        android:id="@+id/child_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Age"
+                        android:inputType="number"
+                        android:maxLines="1"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/button_child"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/text_layout"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="save children"/>
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:enabled="@{model.valid}"
             android:onClick="@{()->listener.registration(model.user)}"
-            android:text="registration" />
+            android:text="registration"/>
 
     </LinearLayout>
 </layout>

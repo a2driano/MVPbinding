@@ -4,9 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MVPbinding.iml" filepath="$PROJECT_DIR$/MVPbinding.iml" />
       <module fileurl="file://C:\AndroidAPP\RealmHome\MVPbinding\.idea\MVPbinding.iml" filepath="C:\AndroidAPP\RealmHome\MVPbinding\.idea\MVPbinding.iml" />
-      <module fileurl="file://C:\AndroidProject\MVPbinding\MVPbinding\MVPbinding.iml" filepath="C:\AndroidProject\MVPbinding\MVPbinding\MVPbinding.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\AndroidProject\MVPbinding\MVPbinding\app\app.iml" filepath="C:\AndroidProject\MVPbinding\MVPbinding\app\app.iml" />
       <module fileurl="file://C:\AndroidAPP\RealmHome\MVPbinding\app\app.iml" filepath="C:\AndroidAPP\RealmHome\MVPbinding\app\app.iml" />
     </modules>
   </component>

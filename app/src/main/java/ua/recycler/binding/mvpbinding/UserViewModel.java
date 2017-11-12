@@ -5,6 +5,8 @@ import android.databinding.Bindable;
 
 import java.util.List;
 
+import io.realm.RealmList;
+import ua.recycler.binding.mvpbinding.model.Child;
 import ua.recycler.binding.mvpbinding.model.User;
 import ua.recycler.binding.mvpbinding.presenter.LoginContract;
 
@@ -14,22 +16,42 @@ import ua.recycler.binding.mvpbinding.presenter.LoginContract;
  */
 
 public class UserViewModel extends BaseObservable {
-    public User user;
-    public LoginContract.EventListener listener;
-    public long id;
-    public String login;
-    public String password;
-    public String passwordSecond;
-    public boolean valid;
+    private User user;
+    private LoginContract.EventListener listener;
+    private long id;
+    private String login;
+    private String password;
+    private String passwordSecond;
+//    private RealmList<Child> childList;
+    private boolean valid;
+
+//    public UserViewModel(User user, LoginContract.EventListener listener) {
+//        this.listener = listener;
+//        id = user.getId();
+//        login = user.getLogin();
+//        password = user.getPassword();
+//        passwordSecond = user.getPassword();
+//        this.user = user;
+//    }
 
     public UserViewModel(User user, LoginContract.EventListener listener) {
         this.listener = listener;
         id = user.getId();
-        login = user.login;
-        password = user.password;
-        passwordSecond = user.password;
+        login = user.getLogin();
+        password = user.getPassword();
+        passwordSecond = user.getPassword();
         this.user = user;
+//        childList = user.getChildrenList();
     }
+
+//    public RealmList<Child> getChildList() {
+//        return childList;
+//    }
+//
+//    public void setChildList(RealmList<Child> childList) {
+//        user.setChildrenList(childList);
+//        this.childList = childList;
+//    }
 
     @Bindable
     public User getUser() {
@@ -88,8 +110,10 @@ public class UserViewModel extends BaseObservable {
         setValid(validatePassword());
     }
 
-    private boolean validatePassword() {
-        boolean matches = password.equals(passwordSecond);
+    public boolean validatePassword() {
+        boolean matches = password.equals(passwordSecond) & !password.isEmpty();
         return matches;
     }
+
+
 }
