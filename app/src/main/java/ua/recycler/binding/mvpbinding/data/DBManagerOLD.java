@@ -3,11 +3,9 @@ package ua.recycler.binding.mvpbinding.data;
 import android.content.Context;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import io.realm.exceptions.RealmException;
 import ua.recycler.binding.mvpbinding.model.User;
@@ -16,32 +14,27 @@ import ua.recycler.binding.mvpbinding.model.User;
  * Created by kunde on 08.11.2017.
  */
 
-public class DBManager implements DataBaseManager {
+public class DBManagerOLD {
     private Realm mRealm;
     private Context context;
-    private static DBManager manager;
+    private static DBManagerOLD manager;
 
-    private DBManager(Context context) {
+    private DBManagerOLD(Context context) {
         this.context = context;
         init();
     }
 
     private void init() {
         mRealm = Realm.getDefaultInstance();
-
-        Realm.init(context);
-        RealmConfiguration config = new RealmConfiguration.Builder().build();
-        Realm.setDefaultConfiguration(config);
     }
 
-    public static DBManager getInstance(Context context) {
+    public static DBManagerOLD getInstance(Context context) {
         if (manager == null) {
-            manager = new DBManager(context);
+            manager = new DBManagerOLD(context);
         }
         return manager;
     }
 
-    @Override
     public void addUser(User user) {
         try {
             mRealm.beginTransaction();
@@ -53,20 +46,13 @@ public class DBManager implements DataBaseManager {
         }
     }
 
-    @Override
-    public void delete(User user) {
+//    public RealmResults<User> getUsers() {
+//        return mRealm.where(User.class).findAll();
+//    }
 
-    }
-
-    @Override
     public List<User> getUsers() {
         RealmResults<User> realmList = mRealm.where(User.class).findAll();
         List<User> list = realmList.subList(0, realmList.size() - 1);
         return list;
-    }
-
-    @Override
-    public User getUser(String login) {
-        return null;
     }
 }

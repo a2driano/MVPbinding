@@ -2,29 +2,23 @@ package ua.recycler.binding.mvpbinding;
 
 import android.app.Application;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import ua.recycler.binding.mvpbinding.data.DBManager;
+import ua.recycler.binding.mvpbinding.data.DataBaseManager;
 
 /**
  * Created by kunde on 06.11.2017.
  */
 
 public class App extends Application {
-    private static DBManager manager;
+    private static DataBaseManager manager;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
-        Realm.init(this);
-        RealmConfiguration config = new RealmConfiguration.Builder().build();
-        Realm.setDefaultConfiguration(config);
-
         manager = DBManager.getInstance(this);
     }
 
-    public static DBManager getManager() {
+    public static DataBaseManager getManager() {
         return manager;
     }
 }
