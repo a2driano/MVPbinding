@@ -1,32 +1,45 @@
 package ua.recycler.binding.mvpbinding.model;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by kunde on 06.11.2017.
  */
-
-public class User extends RealmObject {
-
+@Entity(tableName = "Users")
+public class User {
     @PrimaryKey
+    @ColumnInfo(name = "userid")
     private long id;
-
+    @ColumnInfo(name = "login")
     private String login;
     private String password;
-    private RealmList<Child> childrenList;
+//    private RealmList<Child> childrenList;
+
+    @Ignore
+    private List<Child> childrenList;
 
 
     public User() {
-        this.id = System.currentTimeMillis();
         login = "";
         password = "";
-        childrenList = new RealmList<>();
+        childrenList = new ArrayList<>();
     }
 
-    public User(String login, String password, RealmList<Child> childrenList) {
-        this.id = System.currentTimeMillis();
+    public User(String login, String password, List<Child> childrenList) {
+        this.login = login;
+        this.password = password;
+        this.childrenList = childrenList;
+    }
+
+    public User(long id, String login, String password, List<Child> childrenList) {
+        this.id = id;
         this.login = login;
         this.password = password;
         this.childrenList = childrenList;
@@ -40,11 +53,11 @@ public class User extends RealmObject {
         this.id = id;
     }
 
-    public RealmList<Child> getChildrenList() {
+    public List<Child> getChildrenList() {
         return childrenList;
     }
 
-    public void setChildrenList(RealmList<Child> childrenList) {
+    public void setChildrenList(List<Child> childrenList) {
         this.childrenList = childrenList;
     }
 

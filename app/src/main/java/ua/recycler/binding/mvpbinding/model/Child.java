@@ -7,7 +7,7 @@ import io.realm.annotations.PrimaryKey;
  * Created by kunde on 08.11.2017.
  */
 
-public class Child extends RealmObject {
+public class Child {
     @PrimaryKey
     private long id;
 

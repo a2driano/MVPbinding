@@ -54,21 +54,21 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         public UserViewHolder(View itemView) {
             super(itemView);
             binding = DataBindingUtil.bind(itemView);
-            ViewGroup view = itemView.findViewById(R.id.layout_user);
-            if (user != null) {
-                if (user.getChildrenList().size() > 0) {
-                    for (Child child : user.getChildrenList()) {
-                        TextView name = new TextView(itemView.getContext());
-                        name.setText("Child name: " + child.getName());
-                        TextView age = new TextView(itemView.getContext());
-                        age.setText("" + child.getAge());
-
-
-                        view.addView(name);
-                        view.addView(age);
-                    }
-                }
-            }
+//            ViewGroup view = itemView.findViewById(R.id.layout_user);
+//            if (user != null) {
+//                if (user.getChildrenList().size() > 0) {
+//                    for (Child child : user.getChildrenList()) {
+//                        TextView name = new TextView(itemView.getContext());
+//                        name.setText("Child name: " + child.getName());
+//                        TextView age = new TextView(itemView.getContext());
+//                        age.setText("" + child.getAge());
+//
+//
+//                        view.addView(name);
+//                        view.addView(age);
+//                    }
+//                }
+//            }
 
         }
     }
