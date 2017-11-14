@@ -6,7 +6,7 @@
 
         <variable
             name="model"
-            type="ua.recycler.binding.mvpbinding.UserViewModel"/>
+            type="ua.recycler.binding.mvpbinding.view.UserViewModel"/>
 
         <variable
             name="listener"

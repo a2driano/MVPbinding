@@ -11,6 +11,7 @@ import ua.recycler.binding.mvpbinding.model.Child;
 import ua.recycler.binding.mvpbinding.model.User;
 import ua.recycler.binding.mvpbinding.presenter.LoginContract;
 import ua.recycler.binding.mvpbinding.presenter.PresenterView;
+import ua.recycler.binding.mvpbinding.view.UserViewModel;
 
 public class MainActivity extends AppCompatActivity implements LoginContract.View {
     private LoginContract.EventListener mPresenter;

@@ -1,12 +1,8 @@
-package ua.recycler.binding.mvpbinding;
+package ua.recycler.binding.mvpbinding.view;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
-import java.util.List;
-
-import io.realm.RealmList;
-import ua.recycler.binding.mvpbinding.model.Child;
 import ua.recycler.binding.mvpbinding.model.User;
 import ua.recycler.binding.mvpbinding.presenter.LoginContract;
 
